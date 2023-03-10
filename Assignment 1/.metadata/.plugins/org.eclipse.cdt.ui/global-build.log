@@ -1,0 +1,120 @@
+22:03:19 **** Clean-only build of configuration Debug for project EX4.1 ****
+rm -rf EX4.1.d EX4.1.exe EX4.1.o 
+rm: cannot unlink `EX4.1.exe': Permission denied
+22:03:23 **** Rebuild of configuration Debug for project EX4.1 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o EX4.1.o "..\\EX4.1.c" 
+gcc -o EX4.1.exe EX4.1.o 
+c:/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.1.0/../../../../x86_64-w64-mingw32/bin/ld.exe: cannot open output file EX4.1.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+22:03:48 **** Incremental Build of configuration Debug for project EX4.1 ****
+Info: Internal Builder is used for build
+gcc -o EX4.1.exe EX4.1.o 
+Info: Nothing to build for EX4.1
+Info: Nothing to build for EX4.1
+Info: Nothing to build for EX4.1
+Info: Nothing to build for EX5
+Info: Nothing to build for EX5
+Info: Nothing to build for Assignment 1
+Info: Nothing to build for EX1.2
+Info: Nothing to build for EX2
+Info: Nothing to build for EX2.1
+Info: Nothing to build for EX3
+Info: Nothing to build for EX3.1
+Info: Nothing to build for EX4
+Info: Nothing to build for EX4.1
+Info: Nothing to build for EX5
+22:14:22 **** Rebuild of configuration Debug for project EX5.1 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o EX5.1.o "..\\EX5.1.c" 
+gcc -o EX5.1.exe EX5.1.o 
+Info: Nothing to build for EX6
+Info: Nothing to build for EX7
+Info: Nothing to build for EX5.1
+Info: Nothing to build for EX5.1
+Info: Nothing to build for EX5.1
+Info: Nothing to build for EX5.1
+Info: Nothing to build for Assignment 1
+Info: Nothing to build for EX1.2
+Info: Nothing to build for EX2
+Info: Nothing to build for EX2.1
+Info: Nothing to build for EX3
+Info: Nothing to build for EX3.1
+Info: Nothing to build for EX4
+Info: Nothing to build for EX4.1
+Info: Nothing to build for EX5
+Info: Nothing to build for EX5.1
+Info: Nothing to build for EX6
+22:20:44 **** Rebuild of configuration Debug for project EX6.1 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o EX6.1.o "..\\EX6.1.c" 
+gcc -o EX6.1.exe EX6.1.o 
+Info: Nothing to build for EX7
+Info: Nothing to build for EX6.1
+22:21:03 **** Incremental Build of configuration Debug for project EX6.1 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o EX6.1.o "..\\EX6.1.c" 
+gcc -o EX6.1.exe EX6.1.o 
+Info: Nothing to build for Assignment 1
+Info: Nothing to build for EX1.2
+Info: Nothing to build for EX2
+Info: Nothing to build for EX2.1
+Info: Nothing to build for EX3
+Info: Nothing to build for EX3.1
+Info: Nothing to build for EX4
+Info: Nothing to build for EX4.1
+Info: Nothing to build for EX5
+Info: Nothing to build for EX5.1
+Info: Nothing to build for EX6
+Info: Nothing to build for EX6.1
+Info: Nothing to build for EX7
+22:49:21 **** Rebuild of configuration Debug for project EX7.1 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o EX7.1.o "..\\EX7.1.c" 
+gcc -o EX7.1.exe EX7.1.o 
+Info: Nothing to build for EX7.1
+Info: Nothing to build for EX7.1
+22:50:38 **** Incremental Build of configuration Debug for project EX7.1 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o EX7.1.o "..\\EX7.1.c" 
+..\EX7.1.c: In function 'main':
+..\EX7.1.c:28:42: warning: format '%d' expects argument of type 'int', but argument 3 has type 'long long unsigned int' [-Wformat=]
+   28 |                 printf("Factorial %d is %d",n,factorial);
+      |                                         ~^    ~~~~~~~~~
+      |                                          |    |
+      |                                          int  long long unsigned int
+      |                                         %lld
+gcc -o EX7.1.exe EX7.1.o 
+Info: Nothing to build for EX7.1
+Info: Nothing to build for Assignment 1
+Info: Nothing to build for EX1.2
+Info: Nothing to build for EX2
+Info: Nothing to build for EX2.1
+Info: Nothing to build for EX3
+Info: Nothing to build for EX3.1
+Info: Nothing to build for EX4
+Info: Nothing to build for EX4.1
+Info: Nothing to build for EX5
+Info: Nothing to build for EX5.1
+Info: Nothing to build for EX6
+Info: Nothing to build for EX6.1
+Info: Nothing to build for EX7
+Info: Nothing to build for EX7.1
+22:55:03 **** Rebuild of configuration Debug for project EX8 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o EX8.o "..\\EX8.c" 
+gcc -o EX8.exe EX8.o 
+Info: Nothing to build for EX8
+22:55:19 **** Incremental Build of configuration Debug for project EX8 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o EX8.o "..\\EX8.c" 
+gcc -o EX8.exe EX8.o 
+Info: Nothing to build for EX8
+22:55:45 **** Incremental Build of configuration Debug for project EX8 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o EX8.o "..\\EX8.c" 
+gcc -o EX8.exe EX8.o 
+22:56:04 **** Incremental Build of configuration Debug for project EX8 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o EX8.o "..\\EX8.c" 
+gcc -o EX8.exe EX8.o 

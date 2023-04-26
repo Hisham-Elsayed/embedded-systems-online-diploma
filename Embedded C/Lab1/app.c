@@ -2,6 +2,8 @@
 
 unsigned char string_buff[100]="learn-in-depth:Hisham";
 unsigned char const string_buff2[100]="learn-in-depth:H";
+unsigned char const string_buff3[100]="learn-in-depth:H";
+unsigned char const string_buff4[100]="learn-in-depth:H";
 void main(void)
 {
 	/* Passing first element of array to the function */

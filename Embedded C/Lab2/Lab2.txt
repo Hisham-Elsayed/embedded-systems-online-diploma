@@ -1,0 +1,4 @@
+Writing a baremetal SW on ARM CORTEX-M3 32-Bit Microcontroller STM32F103C8T6 Chip
+
+Baremetal SW is to toggle led 
+-Led is connected to GPIO port c13

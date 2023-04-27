@@ -1,0 +1,7 @@
+In this Lab I wrote a baremetal SW to toggle PF3 which is connected with green LED
+
+To do this i wrote my own:
+Startup.c
+Linker.ld
+main.c
+Makefile

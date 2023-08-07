@@ -333,7 +333,7 @@
    </POPUP>
    <POPUP w="600" x="514" flags="0000002a" y="177" h="400" pid="100" iid="1">
     <PROPERTIES>
-     <ITEM name="Breakpoint 0">"main",8000006,0005,BFFA,BD94,1
+     <ITEM name="Breakpoint 0">"main",800003A,0005,BFFA,BD94,1
 </ITEM>
      <ITEM name="CaseSensitive">No</ITEM>
      <ITEM name="DISPADDRS">Yes</ITEM>

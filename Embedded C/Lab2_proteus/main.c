@@ -51,7 +51,7 @@ int main(void)
 
 	while(1)
 	{
-		R_ODR->Pin.P_13 = 0;
+		R_ODR->Pin.P_13 = 1;
 		for(int i=0;i<5000;i++); 	//arbitrary delay
 		R_ODR->Pin.P_13 = 0;
 		for(int i=0;i<5000;i++); 	//arbitrary delay	

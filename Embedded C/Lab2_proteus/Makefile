@@ -1,7 +1,7 @@
 #@copyright : Hisham
 
 CC=arm-none-eabi-
-CFLAGS= -mcpu=cortex-m3 -gdwarf-2
+CFLAGS= -mcpu=cortex-m3 -gdwarf-2 
 INCS=-I .
 LIBS=
 # Take anything (.c) and switch it to (.o)

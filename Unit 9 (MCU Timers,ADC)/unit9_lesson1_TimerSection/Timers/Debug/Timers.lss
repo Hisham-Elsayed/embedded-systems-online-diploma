@@ -1,0 +1,677 @@
+
+Timers.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000042e  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .bss          00000007  00800060  00800060  000004a2  2**0
+                  ALLOC
+  2 .stab         00000b28  00000000  00000000  000004a4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  3 .stabstr      00000b25  00000000  00000000  00000fcc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+   8:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+   c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  10:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  14:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  18:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  1c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  20:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  24:	0c 94 e3 01 	jmp	0x3c6	; 0x3c6 <__vector_9>
+  28:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  2c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  30:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  34:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  38:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  3c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  40:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  44:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  48:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  4c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  50:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d4 e0       	ldi	r29, 0x04	; 4
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_clear_bss>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	01 c0       	rjmp	.+2      	; 0x6a <.do_clear_bss_start>
+
+00000068 <.do_clear_bss_loop>:
+  68:	1d 92       	st	X+, r1
+
+0000006a <.do_clear_bss_start>:
+  6a:	a7 36       	cpi	r26, 0x67	; 103
+  6c:	b1 07       	cpc	r27, r17
+  6e:	e1 f7       	brne	.-8      	; 0x68 <.do_clear_bss_loop>
+  70:	0e 94 4c 00 	call	0x98	; 0x98 <main>
+  74:	0c 94 15 02 	jmp	0x42a	; 0x42a <_exit>
+
+00000078 <__bad_interrupt>:
+  78:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000007c <TIMER_OVF_Callback>:
+
+
+
+
+void TIMER_OVF_Callback()
+{
+  7c:	df 93       	push	r29
+  7e:	cf 93       	push	r28
+  80:	cd b7       	in	r28, 0x3d	; 61
+  82:	de b7       	in	r29, 0x3e	; 62
+	PORTA = ~PORTA;
+  84:	ab e3       	ldi	r26, 0x3B	; 59
+  86:	b0 e0       	ldi	r27, 0x00	; 0
+  88:	eb e3       	ldi	r30, 0x3B	; 59
+  8a:	f0 e0       	ldi	r31, 0x00	; 0
+  8c:	80 81       	ld	r24, Z
+  8e:	80 95       	com	r24
+  90:	8c 93       	st	X, r24
+}
+  92:	cf 91       	pop	r28
+  94:	df 91       	pop	r29
+  96:	08 95       	ret
+
+00000098 <main>:
+
+
+int main(void)
+{
+  98:	df 93       	push	r29
+  9a:	cf 93       	push	r28
+  9c:	00 d0       	rcall	.+0      	; 0x9e <main+0x6>
+  9e:	00 d0       	rcall	.+0      	; 0xa0 <main+0x8>
+  a0:	cd b7       	in	r28, 0x3d	; 61
+  a2:	de b7       	in	r29, 0x3e	; 62
+	DDRA = 0xFF;
+  a4:	ea e3       	ldi	r30, 0x3A	; 58
+  a6:	f0 e0       	ldi	r31, 0x00	; 0
+  a8:	8f ef       	ldi	r24, 0xFF	; 255
+  aa:	80 83       	st	Z, r24
+	TIMER0_SetCallback_Compare_Interrupt(TIMER_OVF_Callback);
+  ac:	8e e3       	ldi	r24, 0x3E	; 62
+  ae:	90 e0       	ldi	r25, 0x00	; 0
+  b0:	0e 94 a4 01 	call	0x348	; 0x348 <TIMER0_SetCallback_Compare_Interrupt>
+	S_TIMERO0_Config_t config = {CTC,PRESCALE_8CLK,OCIE_ENABLE,TOIE_DISABLE};
+  b4:	88 e0       	ldi	r24, 0x08	; 8
+  b6:	89 83       	std	Y+1, r24	; 0x01
+  b8:	82 e0       	ldi	r24, 0x02	; 2
+  ba:	8a 83       	std	Y+2, r24	; 0x02
+  bc:	82 e0       	ldi	r24, 0x02	; 2
+  be:	8b 83       	std	Y+3, r24	; 0x03
+  c0:	1c 82       	std	Y+4, r1	; 0x04
+	TIMER0_SetOverflowValue(0xF0);
+  c2:	80 ef       	ldi	r24, 0xF0	; 240
+  c4:	0e 94 81 01 	call	0x302	; 0x302 <TIMER0_SetOverflowValue>
+	TIMER0_init(&config);
+  c8:	ce 01       	movw	r24, r28
+  ca:	01 96       	adiw	r24, 0x01	; 1
+  cc:	0e 94 69 00 	call	0xd2	; 0xd2 <TIMER0_init>
+  d0:	ff cf       	rjmp	.-2      	; 0xd0 <main+0x38>
+
+000000d2 <TIMER0_init>:
+Ptr_voidFun_t Callback_CTC;
+uint8_t u8_TOV_Number;
+S_TIMERO0_Config_t* Config;
+
+E_STATUS_T TIMER0_init(S_TIMERO0_Config_t* TIMER0_Config)
+{
+  d2:	df 93       	push	r29
+  d4:	cf 93       	push	r28
+  d6:	00 d0       	rcall	.+0      	; 0xd8 <TIMER0_init+0x6>
+  d8:	0f 92       	push	r0
+  da:	cd b7       	in	r28, 0x3d	; 61
+  dc:	de b7       	in	r29, 0x3e	; 62
+  de:	9b 83       	std	Y+3, r25	; 0x03
+  e0:	8a 83       	std	Y+2, r24	; 0x02
+	E_STATUS_T u8_Retval = E_NOK;
+  e2:	81 e0       	ldi	r24, 0x01	; 1
+  e4:	89 83       	std	Y+1, r24	; 0x01
+	if(NULL_PTR == TIMER0_Config)
+  e6:	8a 81       	ldd	r24, Y+2	; 0x02
+  e8:	9b 81       	ldd	r25, Y+3	; 0x03
+  ea:	00 97       	sbiw	r24, 0x00	; 0
+  ec:	19 f4       	brne	.+6      	; 0xf4 <TIMER0_init+0x22>
+	{
+		u8_Retval = E_NOK;
+  ee:	81 e0       	ldi	r24, 0x01	; 1
+  f0:	89 83       	std	Y+1, r24	; 0x01
+  f2:	77 c0       	rjmp	.+238    	; 0x1e2 <TIMER0_init+0x110>
+	}
+	else
+	{
+		Config = TIMER0_Config;
+  f4:	8a 81       	ldd	r24, Y+2	; 0x02
+  f6:	9b 81       	ldd	r25, Y+3	; 0x03
+  f8:	90 93 66 00 	sts	0x0066, r25
+  fc:	80 93 65 00 	sts	0x0065, r24
+		if(Normal == Config->mode || CTC == Config->mode)
+ 100:	e0 91 65 00 	lds	r30, 0x0065
+ 104:	f0 91 66 00 	lds	r31, 0x0066
+ 108:	80 81       	ld	r24, Z
+ 10a:	88 23       	and	r24, r24
+ 10c:	39 f0       	breq	.+14     	; 0x11c <TIMER0_init+0x4a>
+ 10e:	e0 91 65 00 	lds	r30, 0x0065
+ 112:	f0 91 66 00 	lds	r31, 0x0066
+ 116:	80 81       	ld	r24, Z
+ 118:	88 30       	cpi	r24, 0x08	; 8
+ 11a:	71 f4       	brne	.+28     	; 0x138 <TIMER0_init+0x66>
+		{
+			TCCR0 |= Config->mode;
+ 11c:	a3 e5       	ldi	r26, 0x53	; 83
+ 11e:	b0 e0       	ldi	r27, 0x00	; 0
+ 120:	e3 e5       	ldi	r30, 0x53	; 83
+ 122:	f0 e0       	ldi	r31, 0x00	; 0
+ 124:	90 81       	ld	r25, Z
+ 126:	e0 91 65 00 	lds	r30, 0x0065
+ 12a:	f0 91 66 00 	lds	r31, 0x0066
+ 12e:	80 81       	ld	r24, Z
+ 130:	89 2b       	or	r24, r25
+ 132:	8c 93       	st	X, r24
+			u8_Retval = E_OK;
+ 134:	19 82       	std	Y+1, r1	; 0x01
+ 136:	02 c0       	rjmp	.+4      	; 0x13c <TIMER0_init+0x6a>
+		}
+		else
+		{
+			u8_Retval = E_NOK;
+ 138:	81 e0       	ldi	r24, 0x01	; 1
+ 13a:	89 83       	std	Y+1, r24	; 0x01
+		}
+		if( (NO_CLK_SRC <= Config->clk) && (EXT_RISING >= Config->clk) )
+ 13c:	e0 91 65 00 	lds	r30, 0x0065
+ 140:	f0 91 66 00 	lds	r31, 0x0066
+ 144:	81 81       	ldd	r24, Z+1	; 0x01
+ 146:	88 30       	cpi	r24, 0x08	; 8
+ 148:	70 f4       	brcc	.+28     	; 0x166 <TIMER0_init+0x94>
+		{
+			TCCR0 |= Config->clk;
+ 14a:	a3 e5       	ldi	r26, 0x53	; 83
+ 14c:	b0 e0       	ldi	r27, 0x00	; 0
+ 14e:	e3 e5       	ldi	r30, 0x53	; 83
+ 150:	f0 e0       	ldi	r31, 0x00	; 0
+ 152:	90 81       	ld	r25, Z
+ 154:	e0 91 65 00 	lds	r30, 0x0065
+ 158:	f0 91 66 00 	lds	r31, 0x0066
+ 15c:	81 81       	ldd	r24, Z+1	; 0x01
+ 15e:	89 2b       	or	r24, r25
+ 160:	8c 93       	st	X, r24
+			u8_Retval = E_OK;
+ 162:	19 82       	std	Y+1, r1	; 0x01
+ 164:	02 c0       	rjmp	.+4      	; 0x16a <TIMER0_init+0x98>
+		}
+		else
+		{
+			u8_Retval = E_NOK;
+ 166:	81 e0       	ldi	r24, 0x01	; 1
+ 168:	89 83       	std	Y+1, r24	; 0x01
+		}
+		if(OCIE_DISABLE == Config->OCM_Interrupt || OCIE_ENABLE == Config->OCM_Interrupt)
+ 16a:	e0 91 65 00 	lds	r30, 0x0065
+ 16e:	f0 91 66 00 	lds	r31, 0x0066
+ 172:	82 81       	ldd	r24, Z+2	; 0x02
+ 174:	88 23       	and	r24, r24
+ 176:	39 f0       	breq	.+14     	; 0x186 <TIMER0_init+0xb4>
+ 178:	e0 91 65 00 	lds	r30, 0x0065
+ 17c:	f0 91 66 00 	lds	r31, 0x0066
+ 180:	82 81       	ldd	r24, Z+2	; 0x02
+ 182:	82 30       	cpi	r24, 0x02	; 2
+ 184:	71 f4       	brne	.+28     	; 0x1a2 <TIMER0_init+0xd0>
+		{
+			TIMSK |= Config->OCM_Interrupt;
+ 186:	a9 e5       	ldi	r26, 0x59	; 89
+ 188:	b0 e0       	ldi	r27, 0x00	; 0
+ 18a:	e9 e5       	ldi	r30, 0x59	; 89
+ 18c:	f0 e0       	ldi	r31, 0x00	; 0
+ 18e:	90 81       	ld	r25, Z
+ 190:	e0 91 65 00 	lds	r30, 0x0065
+ 194:	f0 91 66 00 	lds	r31, 0x0066
+ 198:	82 81       	ldd	r24, Z+2	; 0x02
+ 19a:	89 2b       	or	r24, r25
+ 19c:	8c 93       	st	X, r24
+			u8_Retval = E_OK;
+ 19e:	19 82       	std	Y+1, r1	; 0x01
+ 1a0:	02 c0       	rjmp	.+4      	; 0x1a6 <TIMER0_init+0xd4>
+		}
+		else
+		{
+			u8_Retval = E_NOK;
+ 1a2:	81 e0       	ldi	r24, 0x01	; 1
+ 1a4:	89 83       	std	Y+1, r24	; 0x01
+		}
+		if(TOIE_DISABLE == Config->OVF_Interrupt || TOIE_ENABLE == Config->OVF_Interrupt)
+ 1a6:	e0 91 65 00 	lds	r30, 0x0065
+ 1aa:	f0 91 66 00 	lds	r31, 0x0066
+ 1ae:	83 81       	ldd	r24, Z+3	; 0x03
+ 1b0:	88 23       	and	r24, r24
+ 1b2:	39 f0       	breq	.+14     	; 0x1c2 <TIMER0_init+0xf0>
+ 1b4:	e0 91 65 00 	lds	r30, 0x0065
+ 1b8:	f0 91 66 00 	lds	r31, 0x0066
+ 1bc:	83 81       	ldd	r24, Z+3	; 0x03
+ 1be:	81 30       	cpi	r24, 0x01	; 1
+ 1c0:	71 f4       	brne	.+28     	; 0x1de <TIMER0_init+0x10c>
+		{
+			TIMSK |= Config->OVF_Interrupt;
+ 1c2:	a9 e5       	ldi	r26, 0x59	; 89
+ 1c4:	b0 e0       	ldi	r27, 0x00	; 0
+ 1c6:	e9 e5       	ldi	r30, 0x59	; 89
+ 1c8:	f0 e0       	ldi	r31, 0x00	; 0
+ 1ca:	90 81       	ld	r25, Z
+ 1cc:	e0 91 65 00 	lds	r30, 0x0065
+ 1d0:	f0 91 66 00 	lds	r31, 0x0066
+ 1d4:	83 81       	ldd	r24, Z+3	; 0x03
+ 1d6:	89 2b       	or	r24, r25
+ 1d8:	8c 93       	st	X, r24
+			u8_Retval = E_OK;
+ 1da:	19 82       	std	Y+1, r1	; 0x01
+ 1dc:	02 c0       	rjmp	.+4      	; 0x1e2 <TIMER0_init+0x110>
+		}
+		else
+		{
+			u8_Retval = E_NOK;
+ 1de:	81 e0       	ldi	r24, 0x01	; 1
+ 1e0:	89 83       	std	Y+1, r24	; 0x01
+		}
+
+
+	}
+
+	return u8_Retval;
+ 1e2:	89 81       	ldd	r24, Y+1	; 0x01
+}
+ 1e4:	0f 90       	pop	r0
+ 1e6:	0f 90       	pop	r0
+ 1e8:	0f 90       	pop	r0
+ 1ea:	cf 91       	pop	r28
+ 1ec:	df 91       	pop	r29
+ 1ee:	08 95       	ret
+
+000001f0 <TIMER0_stop>:
+
+E_STATUS_T TIMER0_stop()
+{
+ 1f0:	df 93       	push	r29
+ 1f2:	cf 93       	push	r28
+ 1f4:	0f 92       	push	r0
+ 1f6:	cd b7       	in	r28, 0x3d	; 61
+ 1f8:	de b7       	in	r29, 0x3e	; 62
+	E_STATUS_T u8_Retval = E_NOK;
+ 1fa:	81 e0       	ldi	r24, 0x01	; 1
+ 1fc:	89 83       	std	Y+1, r24	; 0x01
+	CLEAR_BIT(TIMSK,CS00);
+ 1fe:	a9 e5       	ldi	r26, 0x59	; 89
+ 200:	b0 e0       	ldi	r27, 0x00	; 0
+ 202:	e9 e5       	ldi	r30, 0x59	; 89
+ 204:	f0 e0       	ldi	r31, 0x00	; 0
+ 206:	80 81       	ld	r24, Z
+ 208:	8e 7f       	andi	r24, 0xFE	; 254
+ 20a:	8c 93       	st	X, r24
+	CLEAR_BIT(TIMSK,CS01);
+ 20c:	a9 e5       	ldi	r26, 0x59	; 89
+ 20e:	b0 e0       	ldi	r27, 0x00	; 0
+ 210:	e9 e5       	ldi	r30, 0x59	; 89
+ 212:	f0 e0       	ldi	r31, 0x00	; 0
+ 214:	80 81       	ld	r24, Z
+ 216:	8d 7f       	andi	r24, 0xFD	; 253
+ 218:	8c 93       	st	X, r24
+	CLEAR_BIT(TIMSK,CS02);
+ 21a:	a9 e5       	ldi	r26, 0x59	; 89
+ 21c:	b0 e0       	ldi	r27, 0x00	; 0
+ 21e:	e9 e5       	ldi	r30, 0x59	; 89
+ 220:	f0 e0       	ldi	r31, 0x00	; 0
+ 222:	80 81       	ld	r24, Z
+ 224:	8b 7f       	andi	r24, 0xFB	; 251
+ 226:	8c 93       	st	X, r24
+
+	return u8_Retval;
+ 228:	89 81       	ldd	r24, Y+1	; 0x01
+}
+ 22a:	0f 90       	pop	r0
+ 22c:	cf 91       	pop	r28
+ 22e:	df 91       	pop	r29
+ 230:	08 95       	ret
+
+00000232 <TIMER0_GetCompareValue>:
+
+E_STATUS_T TIMER0_GetCompareValue(ptr_uint8_t pu8_ticks)
+{
+ 232:	df 93       	push	r29
+ 234:	cf 93       	push	r28
+ 236:	00 d0       	rcall	.+0      	; 0x238 <TIMER0_GetCompareValue+0x6>
+ 238:	0f 92       	push	r0
+ 23a:	cd b7       	in	r28, 0x3d	; 61
+ 23c:	de b7       	in	r29, 0x3e	; 62
+ 23e:	9b 83       	std	Y+3, r25	; 0x03
+ 240:	8a 83       	std	Y+2, r24	; 0x02
+	E_STATUS_T u8_Retval = E_NOK;
+ 242:	81 e0       	ldi	r24, 0x01	; 1
+ 244:	89 83       	std	Y+1, r24	; 0x01
+	*pu8_ticks = OCR0;
+ 246:	ec e5       	ldi	r30, 0x5C	; 92
+ 248:	f0 e0       	ldi	r31, 0x00	; 0
+ 24a:	80 81       	ld	r24, Z
+ 24c:	ea 81       	ldd	r30, Y+2	; 0x02
+ 24e:	fb 81       	ldd	r31, Y+3	; 0x03
+ 250:	80 83       	st	Z, r24
+	return u8_Retval;
+ 252:	89 81       	ldd	r24, Y+1	; 0x01
+}
+ 254:	0f 90       	pop	r0
+ 256:	0f 90       	pop	r0
+ 258:	0f 90       	pop	r0
+ 25a:	cf 91       	pop	r28
+ 25c:	df 91       	pop	r29
+ 25e:	08 95       	ret
+
+00000260 <TIMER0_SetCompareValue>:
+E_STATUS_T TIMER0_SetCompareValue(uint8_t u8_ticks)
+{
+ 260:	df 93       	push	r29
+ 262:	cf 93       	push	r28
+ 264:	00 d0       	rcall	.+0      	; 0x266 <TIMER0_SetCompareValue+0x6>
+ 266:	cd b7       	in	r28, 0x3d	; 61
+ 268:	de b7       	in	r29, 0x3e	; 62
+ 26a:	8a 83       	std	Y+2, r24	; 0x02
+	E_STATUS_T u8_Retval = E_NOK;
+ 26c:	81 e0       	ldi	r24, 0x01	; 1
+ 26e:	89 83       	std	Y+1, r24	; 0x01
+	OCR0 = u8_ticks;
+ 270:	ec e5       	ldi	r30, 0x5C	; 92
+ 272:	f0 e0       	ldi	r31, 0x00	; 0
+ 274:	8a 81       	ldd	r24, Y+2	; 0x02
+ 276:	80 83       	st	Z, r24
+	return u8_Retval;
+ 278:	89 81       	ldd	r24, Y+1	; 0x01
+}
+ 27a:	0f 90       	pop	r0
+ 27c:	0f 90       	pop	r0
+ 27e:	cf 91       	pop	r28
+ 280:	df 91       	pop	r29
+ 282:	08 95       	ret
+
+00000284 <TIMER0_GetCounterValue>:
+
+
+E_STATUS_T TIMER0_GetCounterValue(ptr_uint8_t pu8_ticks)
+{
+ 284:	df 93       	push	r29
+ 286:	cf 93       	push	r28
+ 288:	00 d0       	rcall	.+0      	; 0x28a <TIMER0_GetCounterValue+0x6>
+ 28a:	0f 92       	push	r0
+ 28c:	cd b7       	in	r28, 0x3d	; 61
+ 28e:	de b7       	in	r29, 0x3e	; 62
+ 290:	9b 83       	std	Y+3, r25	; 0x03
+ 292:	8a 83       	std	Y+2, r24	; 0x02
+	E_STATUS_T u8_Retval = E_NOK;
+ 294:	81 e0       	ldi	r24, 0x01	; 1
+ 296:	89 83       	std	Y+1, r24	; 0x01
+	*pu8_ticks = TCNT0;
+ 298:	e2 e5       	ldi	r30, 0x52	; 82
+ 29a:	f0 e0       	ldi	r31, 0x00	; 0
+ 29c:	80 81       	ld	r24, Z
+ 29e:	ea 81       	ldd	r30, Y+2	; 0x02
+ 2a0:	fb 81       	ldd	r31, Y+3	; 0x03
+ 2a2:	80 83       	st	Z, r24
+	return u8_Retval;
+ 2a4:	89 81       	ldd	r24, Y+1	; 0x01
+}
+ 2a6:	0f 90       	pop	r0
+ 2a8:	0f 90       	pop	r0
+ 2aa:	0f 90       	pop	r0
+ 2ac:	cf 91       	pop	r28
+ 2ae:	df 91       	pop	r29
+ 2b0:	08 95       	ret
+
+000002b2 <TIMER0_SetCounterValue>:
+E_STATUS_T TIMER0_SetCounterValue(uint8_t u8_ticks)
+{
+ 2b2:	df 93       	push	r29
+ 2b4:	cf 93       	push	r28
+ 2b6:	00 d0       	rcall	.+0      	; 0x2b8 <TIMER0_SetCounterValue+0x6>
+ 2b8:	cd b7       	in	r28, 0x3d	; 61
+ 2ba:	de b7       	in	r29, 0x3e	; 62
+ 2bc:	8a 83       	std	Y+2, r24	; 0x02
+	E_STATUS_T u8_Retval = E_NOK;
+ 2be:	81 e0       	ldi	r24, 0x01	; 1
+ 2c0:	89 83       	std	Y+1, r24	; 0x01
+	TCNT0 = u8_ticks;
+ 2c2:	e2 e5       	ldi	r30, 0x52	; 82
+ 2c4:	f0 e0       	ldi	r31, 0x00	; 0
+ 2c6:	8a 81       	ldd	r24, Y+2	; 0x02
+ 2c8:	80 83       	st	Z, r24
+	return u8_Retval;
+ 2ca:	89 81       	ldd	r24, Y+1	; 0x01
+}
+ 2cc:	0f 90       	pop	r0
+ 2ce:	0f 90       	pop	r0
+ 2d0:	cf 91       	pop	r28
+ 2d2:	df 91       	pop	r29
+ 2d4:	08 95       	ret
+
+000002d6 <TIMER0_GetOverflowValue>:
+E_STATUS_T TIMER0_GetOverflowValue(ptr_uint8_t pu8_ticks)
+{
+ 2d6:	df 93       	push	r29
+ 2d8:	cf 93       	push	r28
+ 2da:	00 d0       	rcall	.+0      	; 0x2dc <TIMER0_GetOverflowValue+0x6>
+ 2dc:	0f 92       	push	r0
+ 2de:	cd b7       	in	r28, 0x3d	; 61
+ 2e0:	de b7       	in	r29, 0x3e	; 62
+ 2e2:	9b 83       	std	Y+3, r25	; 0x03
+ 2e4:	8a 83       	std	Y+2, r24	; 0x02
+	E_STATUS_T u8_Retval = E_NOK;
+ 2e6:	81 e0       	ldi	r24, 0x01	; 1
+ 2e8:	89 83       	std	Y+1, r24	; 0x01
+	*pu8_ticks = u8_TOV_Number;
+ 2ea:	80 91 64 00 	lds	r24, 0x0064
+ 2ee:	ea 81       	ldd	r30, Y+2	; 0x02
+ 2f0:	fb 81       	ldd	r31, Y+3	; 0x03
+ 2f2:	80 83       	st	Z, r24
+	return u8_Retval;
+ 2f4:	89 81       	ldd	r24, Y+1	; 0x01
+
+}
+ 2f6:	0f 90       	pop	r0
+ 2f8:	0f 90       	pop	r0
+ 2fa:	0f 90       	pop	r0
+ 2fc:	cf 91       	pop	r28
+ 2fe:	df 91       	pop	r29
+ 300:	08 95       	ret
+
+00000302 <TIMER0_SetOverflowValue>:
+E_STATUS_T TIMER0_SetOverflowValue(uint8_t u8_ticks)
+{
+ 302:	df 93       	push	r29
+ 304:	cf 93       	push	r28
+ 306:	00 d0       	rcall	.+0      	; 0x308 <TIMER0_SetOverflowValue+0x6>
+ 308:	cd b7       	in	r28, 0x3d	; 61
+ 30a:	de b7       	in	r29, 0x3e	; 62
+ 30c:	8a 83       	std	Y+2, r24	; 0x02
+	E_STATUS_T u8_Retval = E_NOK;
+ 30e:	81 e0       	ldi	r24, 0x01	; 1
+ 310:	89 83       	std	Y+1, r24	; 0x01
+	u8_TOV_Number = u8_ticks;
+ 312:	8a 81       	ldd	r24, Y+2	; 0x02
+ 314:	80 93 64 00 	sts	0x0064, r24
+	return u8_Retval;
+ 318:	89 81       	ldd	r24, Y+1	; 0x01
+
+}
+ 31a:	0f 90       	pop	r0
+ 31c:	0f 90       	pop	r0
+ 31e:	cf 91       	pop	r28
+ 320:	df 91       	pop	r29
+ 322:	08 95       	ret
+
+00000324 <TIMER0_SetCallback_Overflow_Interrupt>:
+
+void TIMER0_SetCallback_Overflow_Interrupt(Ptr_voidFun_t callback)
+{
+ 324:	df 93       	push	r29
+ 326:	cf 93       	push	r28
+ 328:	00 d0       	rcall	.+0      	; 0x32a <TIMER0_SetCallback_Overflow_Interrupt+0x6>
+ 32a:	cd b7       	in	r28, 0x3d	; 61
+ 32c:	de b7       	in	r29, 0x3e	; 62
+ 32e:	9a 83       	std	Y+2, r25	; 0x02
+ 330:	89 83       	std	Y+1, r24	; 0x01
+	Callback_OVF = callback;
+ 332:	89 81       	ldd	r24, Y+1	; 0x01
+ 334:	9a 81       	ldd	r25, Y+2	; 0x02
+ 336:	90 93 63 00 	sts	0x0063, r25
+ 33a:	80 93 62 00 	sts	0x0062, r24
+}
+ 33e:	0f 90       	pop	r0
+ 340:	0f 90       	pop	r0
+ 342:	cf 91       	pop	r28
+ 344:	df 91       	pop	r29
+ 346:	08 95       	ret
+
+00000348 <TIMER0_SetCallback_Compare_Interrupt>:
+
+void TIMER0_SetCallback_Compare_Interrupt(Ptr_voidFun_t callback)
+{
+ 348:	df 93       	push	r29
+ 34a:	cf 93       	push	r28
+ 34c:	00 d0       	rcall	.+0      	; 0x34e <TIMER0_SetCallback_Compare_Interrupt+0x6>
+ 34e:	cd b7       	in	r28, 0x3d	; 61
+ 350:	de b7       	in	r29, 0x3e	; 62
+ 352:	9a 83       	std	Y+2, r25	; 0x02
+ 354:	89 83       	std	Y+1, r24	; 0x01
+	Callback_CTC = callback;
+ 356:	89 81       	ldd	r24, Y+1	; 0x01
+ 358:	9a 81       	ldd	r25, Y+2	; 0x02
+ 35a:	90 93 61 00 	sts	0x0061, r25
+ 35e:	80 93 60 00 	sts	0x0060, r24
+}
+ 362:	0f 90       	pop	r0
+ 364:	0f 90       	pop	r0
+ 366:	cf 91       	pop	r28
+ 368:	df 91       	pop	r29
+ 36a:	08 95       	ret
+
+0000036c <TIMRE0_COMP_vect>:
+
+
+ISR(TIMRE0_COMP_vect)
+{
+ 36c:	1f 92       	push	r1
+ 36e:	0f 92       	push	r0
+ 370:	0f b6       	in	r0, 0x3f	; 63
+ 372:	0f 92       	push	r0
+ 374:	11 24       	eor	r1, r1
+ 376:	2f 93       	push	r18
+ 378:	3f 93       	push	r19
+ 37a:	4f 93       	push	r20
+ 37c:	5f 93       	push	r21
+ 37e:	6f 93       	push	r22
+ 380:	7f 93       	push	r23
+ 382:	8f 93       	push	r24
+ 384:	9f 93       	push	r25
+ 386:	af 93       	push	r26
+ 388:	bf 93       	push	r27
+ 38a:	ef 93       	push	r30
+ 38c:	ff 93       	push	r31
+ 38e:	df 93       	push	r29
+ 390:	cf 93       	push	r28
+ 392:	cd b7       	in	r28, 0x3d	; 61
+ 394:	de b7       	in	r29, 0x3e	; 62
+	Callback_CTC();
+ 396:	e0 91 60 00 	lds	r30, 0x0060
+ 39a:	f0 91 61 00 	lds	r31, 0x0061
+ 39e:	09 95       	icall
+}
+ 3a0:	cf 91       	pop	r28
+ 3a2:	df 91       	pop	r29
+ 3a4:	ff 91       	pop	r31
+ 3a6:	ef 91       	pop	r30
+ 3a8:	bf 91       	pop	r27
+ 3aa:	af 91       	pop	r26
+ 3ac:	9f 91       	pop	r25
+ 3ae:	8f 91       	pop	r24
+ 3b0:	7f 91       	pop	r23
+ 3b2:	6f 91       	pop	r22
+ 3b4:	5f 91       	pop	r21
+ 3b6:	4f 91       	pop	r20
+ 3b8:	3f 91       	pop	r19
+ 3ba:	2f 91       	pop	r18
+ 3bc:	0f 90       	pop	r0
+ 3be:	0f be       	out	0x3f, r0	; 63
+ 3c0:	0f 90       	pop	r0
+ 3c2:	1f 90       	pop	r1
+ 3c4:	18 95       	reti
+
+000003c6 <__vector_9>:
+
+ISR(TIMER0_OVF_vect)
+{
+ 3c6:	1f 92       	push	r1
+ 3c8:	0f 92       	push	r0
+ 3ca:	0f b6       	in	r0, 0x3f	; 63
+ 3cc:	0f 92       	push	r0
+ 3ce:	11 24       	eor	r1, r1
+ 3d0:	2f 93       	push	r18
+ 3d2:	3f 93       	push	r19
+ 3d4:	4f 93       	push	r20
+ 3d6:	5f 93       	push	r21
+ 3d8:	6f 93       	push	r22
+ 3da:	7f 93       	push	r23
+ 3dc:	8f 93       	push	r24
+ 3de:	9f 93       	push	r25
+ 3e0:	af 93       	push	r26
+ 3e2:	bf 93       	push	r27
+ 3e4:	ef 93       	push	r30
+ 3e6:	ff 93       	push	r31
+ 3e8:	df 93       	push	r29
+ 3ea:	cf 93       	push	r28
+ 3ec:	cd b7       	in	r28, 0x3d	; 61
+ 3ee:	de b7       	in	r29, 0x3e	; 62
+	u8_TOV_Number++;
+ 3f0:	80 91 64 00 	lds	r24, 0x0064
+ 3f4:	8f 5f       	subi	r24, 0xFF	; 255
+ 3f6:	80 93 64 00 	sts	0x0064, r24
+	Callback_OVF();
+ 3fa:	e0 91 62 00 	lds	r30, 0x0062
+ 3fe:	f0 91 63 00 	lds	r31, 0x0063
+ 402:	09 95       	icall
+}
+ 404:	cf 91       	pop	r28
+ 406:	df 91       	pop	r29
+ 408:	ff 91       	pop	r31
+ 40a:	ef 91       	pop	r30
+ 40c:	bf 91       	pop	r27
+ 40e:	af 91       	pop	r26
+ 410:	9f 91       	pop	r25
+ 412:	8f 91       	pop	r24
+ 414:	7f 91       	pop	r23
+ 416:	6f 91       	pop	r22
+ 418:	5f 91       	pop	r21
+ 41a:	4f 91       	pop	r20
+ 41c:	3f 91       	pop	r19
+ 41e:	2f 91       	pop	r18
+ 420:	0f 90       	pop	r0
+ 422:	0f be       	out	0x3f, r0	; 63
+ 424:	0f 90       	pop	r0
+ 426:	1f 90       	pop	r1
+ 428:	18 95       	reti
+
+0000042a <_exit>:
+ 42a:	f8 94       	cli
+
+0000042c <__stop_program>:
+ 42c:	ff cf       	rjmp	.-2      	; 0x42c <__stop_program>

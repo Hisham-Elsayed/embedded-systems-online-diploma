@@ -1,0 +1,34 @@
+14:44:43 **** Incremental Build of configuration Debug for project Drivers ****
+make -j8 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -DDEBUG -c -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson5_lab/Drivers/HAL/includes" -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson5_lab/Drivers/CMSIS_V5" -I../Inc -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson5_lab/Drivers/Stm32_F103C6_Drivers/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+In file included from D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson5_lab/Drivers/CMSIS_V5/ARMCM3.h:98:0,
+                 from D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson5_lab/Drivers/CMSIS_V5/core_cm3.h:24,
+                 from ../Src/main.c:26:
+D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson5_lab/Drivers/CMSIS_V5/core_cm3.h:1388:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+In file included from D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson5_lab/Drivers/Stm32_F103C6_Drivers/inc/Stm32_F103C6_gpio_driver.h:14:0,
+                 from ../Src/main.c:24:
+D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson5_lab/Drivers/Stm32_F103C6_Drivers/inc/stm32f103x8.h:28:0: note: this is the location of the previous definition
+ #define NVIC_BASE        0xE000E100UL
+ 
+../Src/main.c:42:23: warning: initialization makes integer from pointer without a cast [-Wint-conversion]
+ unsigned int _S_MSP = &_estack;
+                       ^
+arm-none-eabi-gcc -gdwarf-2 -o "Drivers.axf" @"objects.list"   -mcpu=cortex-m3 -T"D:\Mastering Embedded Systems\Unit 14 ARM\unit14_lesson5_lab\Drivers\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drivers.axf
+ 
+arm-none-eabi-objdump -h -S  Drivers.axf  > "Drivers.list"
+arm-none-eabi-objcopy  -O binary  Drivers.axf  "Drivers.bin"
+arm-none-eabi-size   Drivers.axf 
+   text	   data	    bss	    dec	    hex	filename
+   1476	      8	   1656	   3140	    c44	Drivers.axf
+Finished building: default.size.stdout
+ 
+Finished building: Drivers.list
+Finished building: Drivers.bin
+ 
+ 
+
+14:44:44 Build Finished. 0 errors, 2 warnings. (took 630ms)
+

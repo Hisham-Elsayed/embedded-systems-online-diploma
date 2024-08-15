@@ -1,0 +1,15 @@
+00:57:07 **** Incremental Build of configuration Debug for project Drivers ****
+make -j8 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -DDEBUG -c -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson2_lab1/Drivers/HAL/includes" -I../Inc -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson2_lab1/Drivers/Stm32_F103C6_Drivers/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-size   Drivers.axf 
+   text	   data	    bss	    dec	    hex	filename
+   2708	      8	   1632	   4348	   10fc	Drivers.axf
+Finished building: default.size.stdout
+ 
+arm-none-eabi-gcc -gdwarf-2 -o "Drivers.axf" @"objects.list"   -mcpu=cortex-m3 -T"D:\Mastering Embedded Systems\Unit 14 ARM\unit14_lesson2_lab1\Drivers\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+arm-none-eabi-objdump -D Drivers.axf > ARM_Course.s
+Finished building target: Drivers.elf
+ 
+
+00:57:08 Build Finished. 0 errors, 0 warnings. (took 631ms)
+

@@ -1,0 +1,178 @@
+18:44:31 **** Build of configuration Debug for project Drivers ****
+make -j8 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -DDEBUG -c -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson2_lab1/Drivers/HAL/includes" -I../Inc -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson2_lab1/Drivers/Stm32_F103C6_Drivers/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-objdump -h -S  Drivers.axf  > "Drivers.list"
+arm-none-eabi-objcopy  -O binary  Drivers.axf  "Drivers.bin"
+arm-none-eabi-size   Drivers.axf 
+   text	   data	    bss	    dec	    hex	filename
+   2700	      8	   1632	   4340	   10f4	Drivers.axf
+Finished building: default.size.stdout
+ 
+Finished building: Drivers.bin
+ 
+arm-none-eabi-objdump: Warning: source file D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson4_lab/Drivers/Debug/../Src/main.c is more recent than object file
+../Src/main.c:42:23: warning: initialization makes integer from pointer without a cast [-Wint-conversion]
+ unsigned int _S_MSP = &_estack;
+                       ^
+../Src/main.c: In function 'SVC_Handler':
+../Src/main.c:77:2: warning: implicit declaration of function 'SWITCH_CPU_AccessLevel' [-Wimplicit-function-declaration]
+  SWITCH_CPU_AccessLevel(privileged);
+  ^~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c: At top level:
+../Src/main.c:84:6: warning: conflicting types for 'SWITCH_CPU_AccessLevel'
+ void SWITCH_CPU_AccessLevel(enum CPUAccessLevel level)
+      ^~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:77:2: note: previous implicit declaration of 'SWITCH_CPU_AccessLevel' was here
+  SWITCH_CPU_AccessLevel(privileged);
+  ^~~~~~~~~~~~~~~~~~~~~~
+Finished building: Drivers.list
+ 
+C:\Users\Hisham\AppData\Local\Temp\cc51Jm6d.s: Assembler messages:
+C:\Users\Hisham\AppData\Local\Temp\cc51Jm6d.s:507: Error: undefined symbol CONTROL used as an immediate value
+C:\Users\Hisham\AppData\Local\Temp\cc51Jm6d.s:533: Error: undefined symbol CONTROL used as an immediate value
+C:\Users\Hisham\AppData\Local\Temp\cc51Jm6d.s:557: Error: undefined symbol CONTROL used as an immediate value
+C:\Users\Hisham\AppData\Local\Temp\cc51Jm6d.s:584: Error: undefined symbol CONTROL used as an immediate value
+make: *** [Src/subdir.mk:24: Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+18:45:58 **** Incremental Build of configuration Debug for project Drivers ****
+make -j8 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -DDEBUG -c -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson2_lab1/Drivers/HAL/includes" -I../Inc -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson2_lab1/Drivers/Stm32_F103C6_Drivers/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-size   Drivers.axf 
+   text	   data	    bss	    dec	    hex	filename
+   2700	      8	   1632	   4340	   10f4	Drivers.axf
+Finished building: default.size.stdout
+ 
+../Src/main.c:42:23: warning: initialization makes integer from pointer without a cast [-Wint-conversion]
+ unsigned int _S_MSP = &_estack;
+                       ^
+../Src/main.c: In function 'SVC_Handler':
+../Src/main.c:77:2: warning: implicit declaration of function 'SWITCH_CPU_AccessLevel' [-Wimplicit-function-declaration]
+  SWITCH_CPU_AccessLevel(privileged);
+  ^~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c: At top level:
+../Src/main.c:84:6: warning: conflicting types for 'SWITCH_CPU_AccessLevel'
+ void SWITCH_CPU_AccessLevel(enum CPUAccessLevel level)
+      ^~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:77:2: note: previous implicit declaration of 'SWITCH_CPU_AccessLevel' was here
+  SWITCH_CPU_AccessLevel(privileged);
+  ^~~~~~~~~~~~~~~~~~~~~~
+C:\Users\Hisham\AppData\Local\Temp\ccsaj2Od.s: Assembler messages:
+C:\Users\Hisham\AppData\Local\Temp\ccsaj2Od.s:507: Error: undefined symbol CONTROL used as an immediate value
+C:\Users\Hisham\AppData\Local\Temp\ccsaj2Od.s:533: Error: undefined symbol CONTROL used as an immediate value
+C:\Users\Hisham\AppData\Local\Temp\ccsaj2Od.s:557: Error: undefined symbol CONTROL used as an immediate value
+C:\Users\Hisham\AppData\Local\Temp\ccsaj2Od.s:584: Error: undefined symbol CONTROL used as an immediate value
+make: *** [Src/subdir.mk:24: Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+18:48:34 **** Incremental Build of configuration Debug for project Drivers ****
+make -j8 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -DDEBUG -c -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson2_lab1/Drivers/HAL/includes" -I../Inc -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson2_lab1/Drivers/Stm32_F103C6_Drivers/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-size   Drivers.axf 
+   text	   data	    bss	    dec	    hex	filename
+   2700	      8	   1632	   4340	   10f4	Drivers.axf
+Finished building: default.size.stdout
+ 
+../Src/main.c:42:23: warning: initialization makes integer from pointer without a cast [-Wint-conversion]
+ unsigned int _S_MSP = &_estack;
+                       ^
+../Src/main.c: In function 'SVC_Handler':
+../Src/main.c:77:2: warning: implicit declaration of function 'SWITCH_CPU_AccessLevel' [-Wimplicit-function-declaration]
+  SWITCH_CPU_AccessLevel(privileged);
+  ^~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c: At top level:
+../Src/main.c:84:6: warning: conflicting types for 'SWITCH_CPU_AccessLevel'
+ void SWITCH_CPU_AccessLevel(enum CPUAccessLevel level)
+      ^~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:77:2: note: previous implicit declaration of 'SWITCH_CPU_AccessLevel' was here
+  SWITCH_CPU_AccessLevel(privileged);
+  ^~~~~~~~~~~~~~~~~~~~~~
+C:\Users\Hisham\AppData\Local\Temp\ccyBfoN1.s: Assembler messages:
+C:\Users\Hisham\AppData\Local\Temp\ccyBfoN1.s:507: Error: undefined symbol CONTROL used as an immediate value
+C:\Users\Hisham\AppData\Local\Temp\ccyBfoN1.s:533: Error: undefined symbol CONTROL used as an immediate value
+C:\Users\Hisham\AppData\Local\Temp\ccyBfoN1.s:557: Error: undefined symbol CONTROL used as an immediate value
+C:\Users\Hisham\AppData\Local\Temp\ccyBfoN1.s:584: Error: undefined symbol CONTROL used as an immediate value
+make: *** [Src/subdir.mk:24: Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+18:50:03 **** Incremental Build of configuration Debug for project Drivers ****
+make -j8 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -DDEBUG -c -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson2_lab1/Drivers/HAL/includes" -I../Inc -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson2_lab1/Drivers/Stm32_F103C6_Drivers/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-size   Drivers.axf 
+   text	   data	    bss	    dec	    hex	filename
+   2700	      8	   1632	   4340	   10f4	Drivers.axf
+Finished building: default.size.stdout
+ 
+../Src/main.c:42:23: warning: initialization makes integer from pointer without a cast [-Wint-conversion]
+ unsigned int _S_MSP = &_estack;
+                       ^
+../Src/main.c: In function 'SVC_Handler':
+../Src/main.c:77:2: warning: implicit declaration of function 'SWITCH_CPU_AccessLevel' [-Wimplicit-function-declaration]
+  SWITCH_CPU_AccessLevel(privileged);
+  ^~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c: At top level:
+../Src/main.c:84:6: warning: conflicting types for 'SWITCH_CPU_AccessLevel'
+ void SWITCH_CPU_AccessLevel(enum CPUAccessLevel level)
+      ^~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:77:2: note: previous implicit declaration of 'SWITCH_CPU_AccessLevel' was here
+  SWITCH_CPU_AccessLevel(privileged);
+  ^~~~~~~~~~~~~~~~~~~~~~
+C:\Users\Hisham\AppData\Local\Temp\ccpqonOI.s: Assembler messages:
+C:\Users\Hisham\AppData\Local\Temp\ccpqonOI.s:507: Error: undefined symbol CONTROL used as an immediate value
+C:\Users\Hisham\AppData\Local\Temp\ccpqonOI.s:533: Error: undefined symbol CONTROL used as an immediate value
+C:\Users\Hisham\AppData\Local\Temp\ccpqonOI.s:557: Error: undefined symbol CONTROL used as an immediate value
+C:\Users\Hisham\AppData\Local\Temp\ccpqonOI.s:584: Error: undefined symbol CONTROL used as an immediate value
+make: *** [Src/subdir.mk:24: Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+18:50:07 **** Incremental Build of configuration Debug for project Drivers ****
+make -j8 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -DDEBUG -c -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson2_lab1/Drivers/HAL/includes" -I../Inc -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson2_lab1/Drivers/Stm32_F103C6_Drivers/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-size   Drivers.axf 
+   text	   data	    bss	    dec	    hex	filename
+   2700	      8	   1632	   4340	   10f4	Drivers.axf
+Finished building: default.size.stdout
+ 
+../Src/main.c:42:23: warning: initialization makes integer from pointer without a cast [-Wint-conversion]
+ unsigned int _S_MSP = &_estack;
+                       ^
+../Src/main.c: In function 'SVC_Handler':
+../Src/main.c:77:2: warning: implicit declaration of function 'SWITCH_CPU_AccessLevel' [-Wimplicit-function-declaration]
+  SWITCH_CPU_AccessLevel(privileged);
+  ^~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c: At top level:
+../Src/main.c:84:6: warning: conflicting types for 'SWITCH_CPU_AccessLevel'
+ void SWITCH_CPU_AccessLevel(enum CPUAccessLevel level)
+      ^~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:77:2: note: previous implicit declaration of 'SWITCH_CPU_AccessLevel' was here
+  SWITCH_CPU_AccessLevel(privileged);
+  ^~~~~~~~~~~~~~~~~~~~~~
+C:\Users\Hisham\AppData\Local\Temp\ccUJoRLf.s: Assembler messages:
+C:\Users\Hisham\AppData\Local\Temp\ccUJoRLf.s:507: Error: undefined symbol CONTROL used as an immediate value
+C:\Users\Hisham\AppData\Local\Temp\ccUJoRLf.s:533: Error: undefined symbol CONTROL used as an immediate value
+C:\Users\Hisham\AppData\Local\Temp\ccUJoRLf.s:557: Error: undefined symbol CONTROL used as an immediate value
+C:\Users\Hisham\AppData\Local\Temp\ccUJoRLf.s:584: Error: undefined symbol CONTROL used as an immediate value
+make: *** [Src/subdir.mk:24: Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+18:51:18 **** Incremental Build of configuration Debug for project Drivers ****
+make -j8 all 
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -DDEBUG -c -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson2_lab1/Drivers/HAL/includes" -I../Inc -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson2_lab1/Drivers/Stm32_F103C6_Drivers/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-size   Drivers.axf 
+   text	   data	    bss	    dec	    hex	filename
+   2700	      8	   1632	   4340	   10f4	Drivers.axf
+Finished building: default.size.stdout
+ 
+../Src/main.c:42:23: warning: initialization makes integer from pointer without a cast [-Wint-conversion]
+ unsigned int _S_MSP = &_estack;
+                       ^
+../Src/main.c: In function 'SVC_Handler':
+../Src/main.c:77:2: warning: implicit declaration of function 'SWITCH_CPU_AccessLevel' [-Wimplicit-function-declaration]
+  SWITCH_CPU_AccessLevel(privileged);
+  ^~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c: At top level:
+../Src/main.c:84:6: warning: conflicting types for 'SWITCH_CPU_AccessLevel'
+ void SWITCH_CPU_AccessLevel(enum CPUAccessLevel level)
+      ^~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:77:2: note: previous implicit declaration of 'SWITCH_CPU_AccessLevel' was here
+  SWITCH_CPU_AccessLevel(privileged);
+  ^~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -gdwarf-2 -o "Drivers.axf" @"objects.list"   -mcpu=cortex-m3 -T"D:\Mastering Embedded Systems\Unit 14 ARM\unit14_lesson2_lab1\Drivers\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+arm-none-eabi-objdump -D Drivers.axf > ARM_Course.s
+Finished building target: Drivers.elf
+ 

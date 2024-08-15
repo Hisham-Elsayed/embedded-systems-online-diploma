@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>Debug_Drivers.elf</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.cdt.core.cnature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>Drivers.elf</name>
+			<type>1</type>
+			<location>D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson2_lab1/Drivers/Debug/Drivers.elf</location>
+		</link>
+	</linkedResources>
+</projectDescription>

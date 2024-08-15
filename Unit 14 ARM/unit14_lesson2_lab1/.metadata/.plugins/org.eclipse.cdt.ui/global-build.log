@@ -1,0 +1,56 @@
+13:24:49 **** Clean-only build of configuration Debug for project Drivers ****
+make -j8 clean 
+rm -rf *
+ 
+13:24:50 **** Build of configuration Debug for project Drivers ****
+make -j8 all 
+arm-none-eabi-gcc -gdwarf-2 "../Stm32_F103C6_Drivers/GPIO/Stm32_F103C6_gpio_driver.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -DDEBUG -c -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson2_lab1/Drivers/HAL/includes" -I../Inc -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson2_lab1/Drivers/Stm32_F103C6_Drivers/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Stm32_F103C6_Drivers/GPIO/Stm32_F103C6_gpio_driver.d" -MT"Stm32_F103C6_Drivers/GPIO/Stm32_F103C6_gpio_driver.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Stm32_F103C6_Drivers/GPIO/Stm32_F103C6_gpio_driver.o"
+arm-none-eabi-gcc -gdwarf-2 "../Stm32_F103C6_Drivers/Stm32_F103C6_EXTI_driver.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -DDEBUG -c -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson2_lab1/Drivers/HAL/includes" -I../Inc -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson2_lab1/Drivers/Stm32_F103C6_Drivers/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Stm32_F103C6_Drivers/Stm32_F103C6_EXTI_driver.d" -MT"Stm32_F103C6_Drivers/Stm32_F103C6_EXTI_driver.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Stm32_F103C6_Drivers/Stm32_F103C6_EXTI_driver.o"
+arm-none-eabi-gcc -gdwarf-2 -mcpu=cortex-m3 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f103c6tx.d" -MT"Startup/startup_stm32f103c6tx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Startup/startup_stm32f103c6tx.o" "../Startup/startup_stm32f103c6tx.s"
+arm-none-eabi-gcc -gdwarf-2 "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -DDEBUG -c -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson2_lab1/Drivers/HAL/includes" -I../Inc -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson2_lab1/Drivers/Stm32_F103C6_Drivers/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -gdwarf-2 "../Src/syscalls.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -DDEBUG -c -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson2_lab1/Drivers/HAL/includes" -I../Inc -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson2_lab1/Drivers/Stm32_F103C6_Drivers/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc -gdwarf-2 "../Src/sysmem.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -DDEBUG -c -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson2_lab1/Drivers/HAL/includes" -I../Inc -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson2_lab1/Drivers/Stm32_F103C6_Drivers/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc -gdwarf-2 "../HAL/keypad.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -DDEBUG -c -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson2_lab1/Drivers/HAL/includes" -I../Inc -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson2_lab1/Drivers/Stm32_F103C6_Drivers/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"HAL/keypad.d" -MT"HAL/keypad.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "HAL/keypad.o"
+arm-none-eabi-gcc -gdwarf-2 "../HAL/lcd.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -DDEBUG -c -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson2_lab1/Drivers/HAL/includes" -I../Inc -I"D:/Mastering Embedded Systems/Unit 14 ARM/unit14_lesson2_lab1/Drivers/Stm32_F103C6_Drivers/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"HAL/lcd.d" -MT"HAL/lcd.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "HAL/lcd.o"
+arm-none-eabi-gcc -gdwarf-2 -o "Drivers.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\Mastering Embedded Systems\Unit 14 ARM\unit14_lesson2_lab1\Drivers\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drivers.elf
+ 
+arm-none-eabi-size   Drivers.elf 
+arm-none-eabi-objdump -h -S  Drivers.elf  > "Drivers.list"
+arm-none-eabi-objcopy  -O binary  Drivers.elf  "Drivers.bin"
+   text	   data	    bss	    dec	    hex	filename
+   2596	      8	   1632	   4236	   108c	Drivers.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drivers.bin
+Finished building: Drivers.list
+ 
+ 
+13:25:01 **** Incremental Build of configuration Debug for project Drivers ****
+make -j8 all 
+arm-none-eabi-size   Drivers.elf 
+   text	   data	    bss	    dec	    hex	filename
+   2596	      8	   1632	   4236	   108c	Drivers.elf
+Finished building: default.size.stdout
+ 
+13:25:27 **** Incremental Build of configuration Debug for project Drivers ****
+make -j8 all 
+arm-none-eabi-size   Drivers.elf 
+   text	   data	    bss	    dec	    hex	filename
+   2596	      8	   1632	   4236	   108c	Drivers.elf
+Finished building: default.size.stdout
+ 
+13:27:18 **** Incremental Build of configuration Debug for project Drivers ****
+make -j8 all 
+arm-none-eabi-size   Drivers.elf 
+   text	   data	    bss	    dec	    hex	filename
+   2596	      8	   1632	   4236	   108c	Drivers.elf
+Finished building: default.size.stdout
+ 
+13:30:52 **** Incremental Build of configuration Debug for project Drivers ****
+make -j8 all 
+arm-none-eabi-size   Drivers.elf 
+   text	   data	    bss	    dec	    hex	filename
+   2596	      8	   1632	   4236	   108c	Drivers.elf
+Finished building: default.size.stdout
+ 

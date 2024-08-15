@@ -1,0 +1,26 @@
+/*
+ * CortexMX_OS_porting.c
+ *
+ *  Created on: Aug 8, 2024
+ *      Author: Hisham
+ */
+
+#include "CortexMX_OS_porting.h"
+
+void HardFault_Handler()
+{
+	while(1);
+}
+
+void BusFault_Handler()
+{
+	while(1);
+
+}
+
+void UsageFault_Handler()
+{
+	while(1);
+
+}
+

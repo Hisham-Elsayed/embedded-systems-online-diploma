@@ -1,0 +1,45 @@
+23:55:15 **** Incremental Build of configuration Debug for project MYRTOS_Project ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103x6 -DDEBUG -c -I../Core/Inc -I"D:/Mastering Embedded Systems/MYRTOS_Project/MYRTOS_Project/CMSIS" -I"D:/Mastering Embedded Systems/MYRTOS_Project/MYRTOS_Project/MYRTOS/inc" -I"D:/Mastering Embedded Systems/MYRTOS_Project/MYRTOS_Project/Stm32_F103C6_Drivers/inc" -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+In file included from D:/Mastering Embedded Systems/MYRTOS_Project/MYRTOS_Project/CMSIS/ARMCM3.h:98:0,
+                 from D:/Mastering Embedded Systems/MYRTOS_Project/MYRTOS_Project/CMSIS/core_cm3.h:24,
+                 from D:/Mastering Embedded Systems/MYRTOS_Project/MYRTOS_Project/MYRTOS/inc/CortexMX_OS_porting.h:11,
+                 from D:/Mastering Embedded Systems/MYRTOS_Project/MYRTOS_Project/MYRTOS/inc/Scheduler.h:11,
+                 from ../Core/Src/main.c:25:
+D:/Mastering Embedded Systems/MYRTOS_Project/MYRTOS_Project/CMSIS/core_cm3.h:1388:0: warning: "NVIC_BASE" redefined
+ #define NVIC_BASE           (SCS_BASE +  0x0100UL)                    /*!< NVIC Base Address */
+ 
+In file included from D:/Mastering Embedded Systems/MYRTOS_Project/MYRTOS_Project/Stm32_F103C6_Drivers/inc/Stm32_F103C6_gpio_driver.h:14:0,
+                 from ../Core/Src/main.c:23:
+D:/Mastering Embedded Systems/MYRTOS_Project/MYRTOS_Project/Stm32_F103C6_Drivers/inc/stm32f103x8.h:28:0: note: this is the location of the previous definition
+ #define NVIC_BASE        0xE000E100UL
+ 
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:141:2: warning: implicit declaration of function 'HW_Init' [-Wimplicit-function-declaration]
+  HW_Init();
+  ^~~~~~~
+../Core/Src/main.c:145:2: warning: implicit declaration of function 'strcpy' [-Wimplicit-function-declaration]
+  strcpy(MUTEX1.MutexName,"mutex_shared(T1_T4)");
+  ^~~~~~
+../Core/Src/main.c:145:2: warning: incompatible implicit declaration of built-in function 'strcpy'
+../Core/Src/main.c:145:2: note: include '<string.h>' or provide a declaration of 'strcpy'
+../Core/Src/main.c:174:8: warning: 'error' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  error += MYRTOS_CreateTask(&Task1);
+        ^~
+arm-none-eabi-gcc -o "MYRTOS_Project.axf" @"objects.list"   -mcpu=cortex-m3 -T"D:\Mastering Embedded Systems\MYRTOS_Project\MYRTOS_Project\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MYRTOS_Project.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MYRTOS_Project.axf
+ 
+arm-none-eabi-objdump -h -S  MYRTOS_Project.axf  > "MYRTOS_Project.list"
+arm-none-eabi-objcopy  -O binary  MYRTOS_Project.axf  "MYRTOS_Project.bin"
+arm-none-eabi-size   MYRTOS_Project.axf 
+   text	   data	    bss	    dec	    hex	filename
+   3832	     16	   2888	   6736	   1a50	MYRTOS_Project.axf
+Finished building: default.size.stdout
+ 
+Finished building: MYRTOS_Project.bin
+Finished building: MYRTOS_Project.list
+ 
+ 
+
+23:55:16 Build Finished. 0 errors, 5 warnings. (took 615ms)
+

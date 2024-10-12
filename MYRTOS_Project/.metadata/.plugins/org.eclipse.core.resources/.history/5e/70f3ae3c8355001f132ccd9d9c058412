@@ -1,0 +1,172 @@
+/* USER CODE BEGIN Header */
+/**
+  ******************************************************************************
+  * @file           : main.c
+  * @brief          : Main program body
+  ******************************************************************************
+  * @attention
+  *
+  * <h2><center>&copy; Copyright (c) 2024 STMicroelectronics.
+  * All rights reserved.</center></h2>
+  *
+  * This software component is licensed by ST under BSD 3-Clause license,
+  * the "License"; You may not use this file except in compliance with the
+  * License. You may obtain a copy of the License at:
+  *                        opensource.org/licenses/BSD-3-Clause
+  *
+  ******************************************************************************
+  */
+#if !defined(__SOFT_FP__) && defined(__ARM_FP)
+#warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+#endif
+
+#include "Stm32_F103C6_gpio_driver.h"
+#include "Stm32_F103C6_EXTI_driver.h"
+#include "Scheduler.h"
+
+#define TaskA_STACK_SIZE		100 //100 Bytes
+#define TaskB_STACK_SIZE		100 //100 Bytes
+#define TaskA_STACK_SIZE		100 //100 Bytes
+
+
+
+#define OS_Generate_Exception		__asm volatile("SVC #0x3")
+
+extern int _estack;
+
+/***Symbols****/
+//MSP
+unsigned int _S_MSP = &_estack;
+unsigned int _E_MSP;
+
+//PSP Task A stack
+unsigned int _S_PSP_TA;
+unsigned int _E_PSP_TA;
+
+//PSP Task B stack
+unsigned int _S_PSP_TB;
+unsigned int _E_PSP_TB;
+
+
+
+void HardFault_Handler()
+{
+
+}
+
+void BusFault_Handler()
+{
+
+}
+
+void UsageFault_Handler()
+{
+
+}
+
+void SVC_Handler()
+{
+
+}
+
+unsigned int IRQ_Flag,TaskA_IRQ_Flag,TaskB_IRQ_Flag = 0;
+
+
+
+
+
+
+void EXTI9_Callback(void)
+{
+	//CPU in Handler Mode
+
+	if(IRQ_Flag == 0)
+	{
+		TaskA_IRQ_Flag = 1;
+		IRQ_Flag = 1;
+	}
+	else if(IRQ_Flag == 1)
+	{
+		TaskB_IRQ_Flag = 1;
+		IRQ_Flag = 0;
+	}
+
+}
+
+
+int TaskA(int a,int b,int c)
+{
+	return a+b+c;
+}
+
+
+int TaskB(int a,int b,int c,int d)
+{
+	return a+b+c+d;
+}
+
+void MainOs()
+{
+	//Main Stack
+	_E_MSP = (_S_MSP - 512);
+
+	//Task A
+	_S_PSP_TA = (_E_MSP - 8);
+	_E_PSP_TA = (_S_PSP_TA - TaskA_STACK_SIZE);
+
+	//Task B
+	_S_PSP_TB = (_E_PSP_TA - 8);
+	_E_PSP_TB = (_S_PSP_TB - TaskB_STACK_SIZE);
+
+	while(1)
+	{
+		__asm("NOP");
+		if(TaskA_IRQ_Flag ==1)
+		{
+			//Set PSP Register = _S_PSP_TA
+			OS_SET_PSP(_S_PSP_TA);
+			//Switch SP -> PSP
+			OS_SWITCH_SP_to_PSP;
+			//Switch from privileged to unprivileged
+			SWITCH_CPU_AccessLevel(unprivileged);
+
+
+			TaskA_IRQ_Flag = TaskA(1,2, 3) ;
+
+			//Switch from unprivileged to privileged
+			OS_Generate_Exception;
+			//Switch SP -> MSP
+			OS_SWITCH_SP_to_MSP;
+		}
+		else if (TaskB_IRQ_Flag ==1)
+		{
+			//Set PSP Register = _S_PSP_TB
+			OS_SET_PSP(_S_PSP_TB);
+			//Switch SP -> PSP
+			OS_SWITCH_SP_to_PSP;
+			//Switch from privileged to unprivileged
+			SWITCH_CPU_AccessLevel(unprivileged);
+
+			TaskB_IRQ_Flag = TaskB(1, 2	,3, 4);
+
+			//Switch from unprivileged to privileged
+			OS_Generate_Exception;
+			//Switch SP -> MSP
+			OS_SWITCH_SP_to_MSP;
+		}
+
+	}
+}
+
+
+int main(void) {
+	//Enable Clock
+
+	while(1)
+	{
+		if(IRQ_Flag)
+		{
+			IRQ_Flag =0;
+		}
+	}
+}
